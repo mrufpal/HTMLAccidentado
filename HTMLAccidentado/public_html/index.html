@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Necesario para la obligatoriedad de uno de los dos input (telefono y email) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+
+        <header>
+            <h1>DECLARACIÓN AMISTOSA DE ACCIDENTE</h1>
+        </header>
+
+        <main>
+
+            <form action=".">
+
+                <!-- Fecha accidente -->
+                <section>
+                    <h4>1) Fecha del accidente</h4>
+
+                    <label for="1_accident_date">Fecha del Accidente:</label>
+                    <input type="date" name="1_accident_date" id="1_accident_date" required/>
+
+                    <label for="1_accident_hour">Hora:</label>
+                    <input type="time" name="1_accident_hour" id="1_accident_hour" required/>
+                </section>
+
+                <br/>
+
+                <!-- Localizacion -->
+                <section>
+                    <h4>2) Localización</h4>
+
+                    <label for="2_country">País:</label>
+                    <input type="text" name="2_country" id="2_country" required />
+
+                    <label for="2_place">Lugar:</label>
+                    <input type="text" name="2_place" id="2_place" required />
+                </section>
+
+                <br/>
+
+                <!-- Victima(s) incluso leve(s) -->
+                <section>
+                    <h4>3) Víctima(s) incluso leve(s)</h4>
+
+                    <!--<form>-->
+                        <label for="3_victims_no">No</label>
+                        <input type="radio" name="victimas" id="3_victims_no" value="no" checked>
+                        <label for="3_victims_yes">Sí</label>
+                        <input type="radio" name="victimas" id="3_victims_yes" value="yes">
+                    <!--form>-->
+                </section>
+
+                <br/>
+
+                <!-- Daños materiales -->
+                <section>
+                    <h4>4) Daños materiales</h4>
+
+                    <table border>
+                        <tr>
+                            <th>Vehículos distintos de A y B</th>
+                            <th>Objetos distintos al vehículo</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <!--<form>--> 
+                                    <input type="radio" name="4_different_vehicles" value="no" checked> No<br>
+                                    <input type="radio" name="4_different_vehicles" value="yes"> Sí<br>
+                                <!--form>-->
+                            </td>
+                            <td>
+                                <!--<form>-->
+                                    <input type="radio" name="4_different_objects" value="no" checked> No<br>
+                                    <input type="radio" name="4_different_objects" value="yes"> Sí<br>
+                                <!--form>-->
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+
+                <br/>
+
+                <!-- Testigos -->
+                <section>
+                    <h4>5) Testigos: nombre, dirección, tel.</h4>
+                    <textarea name="5_witnesses" rows="4" cols="50">
+                    </textarea>
+                </section>
+
+                <br/>
+                <br/>
+
+
+                <!----------------------------->
+                <section>
+                    <table border>
+                        <tr>
+                            <td>
+                                <!-- Vehiculo A -->
+                                <h2>Vehículo A</h2>
+
+                                <section>
+                                    <h4>6) Asegurado (véase póliza de seguro)</h4>
+
+                                    <label>Nombre:</label>
+                                    <input type="text" name="6A_name" required />
+                                    <br/>
+                                    <label>Apellidos:</label>
+                                    <input type="text" name="6A_surname" required />
+
+                                    <br/>
+
+                                    <label>Dirección:</label>
+                                    <input type="text" name="6A_address" required />
+                                    <br/>
+                                    <label>Código Postal:</label>
+                                    <input type="text" name="6A_zip_code" pattern="[0-9]{5}" title="Un código postal es un número con 5 dígitos" required>
+
+                                    <br/>
+
+                                    <label>País:</label>
+                                    <input type="text" name="6A_country" required />
+
+                                    <br/>
+
+                                    <label>Tel. o E-mail:</label>
+                                    <input type="text"  name="6A_phone_mail" pattern="([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$)||([0-9]{9})" title="Debe ser un teléfono o un email" required />
+                                </section>
+
+                                <br/>
+
+                                <section>
+                                    <h4>7) Vehículo</h4>
+
+                                    <h5>Vehículo a motor</h5>
+
+                                    <label>Marca, modelo:</label>
+                                    <select name="7A_brand" >
+                                        <option value="volvo">Volvo</option>
+                                        <option value="saab">Saab</option>
+                                        <option value="fiat">Fiat</option>
+                                        <option value="audi">Audi</option>
+                                    </select>
+
+                                    <br/>
+
+                                    <label>Matrícula (o bastidor):</label>
+                                    <input type="text" name="7A_vehicle_registration" required />
+                                    <br/>
+                                    <label>País de matrícula:</label>
+                                    <input type="text" name="7A_country_registration" required />
+
+                                    <h5>Remolque</h5>
+
+                                    <label>Matrícula (o bastidor):</label>
+                                    <input type="text" name="7A_towing_license_plate" />
+                                    <br/>
+                                    <label>País de matrícula:</label>
+                                    <input type="text" name="7A_country_towing" />
+                                </section>
+
+                                <br/>
+
+                                <section>
+                                    <h4>8) Aseguradora (véase póliza de seguro)</h4>
+
+                                    <label>Nombre:</label>
+                                    <input type="text" name="8A_name" required />
+                                    <br/>
+                                    <label>Nº de póliza:</label>
+                                    <input type="text" name="8A_policy_number" required />
+
+                                    <br/>
+
+                                    <label>Nº de carta verde:</label>
+                                    <input type="text" name="8A_green_letter_number" />
+
+                                    <br/>
+
+                                    <label>Certificado o carta verde valida desde:</label>
+                                    <input type="date" name="8A_valid_from" />
+                                    <label>hasta:</label>
+                                    <input type="date" name="8A_valid_until" />
+
+                                    <br/>
+
+                                    <label>Agencia (oficina o corredor):</label>
+                                    <input type="text" name="8A_agency" />
+
+                                    <br/>
+
+                                    <label>Nombre:</label>
+                                    <input type="text" name="8A_name_agency" />
+
+                                    <br/>
+
+                                    <label>Dirección:</label>
+                                    <input type="text" name="8A_address_agency" />
+                                    <br/>
+                                    <label>País:</label>
+                                    <input type="text" name="8A_country_agency" />
+
+                                    <br/>
+
+                                    <label>Tel. o E-mail:</label>
+                                    <input type="text"  name="8A_phone_mail" pattern="([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$)||([0-9]{9})" title="Debe ser un teléfono o un email" />
+
+                                    <br/>
+
+                                    <!--<form>-->
+                                        <label>¿Los daños propios del vehículo estan asegurados?</label>
+                                        <br/>
+                                        <input type="radio" name="8A_insured_damages" value="no" checked> No<br>
+                                        <input type="radio" name="8A_insured_damages" value="yes"> Sí<br>
+                                    <!--form>-->
+                                </section>
+
+                                <br/>
+
+                                <!-- Conductor A -->
+                                <section>
+                                    <h4>9) Conductor (ver permiso de conducir)</h4>
+
+                                    <label>Nombre:</label>
+                                    <input type="text" name="9A_name" required />
+                                    <br/>
+                                    <label>Apellidos:</label>
+                                    <input type="text" name="9A_surname" required />
+
+                                    <br/>
+
+                                    <label>Fecha de nacimiento:</label>
+                                    <input type="date" name="9A_birthdate" required/>
+
+                                    <br/>
+
+                                    <label>Dirección:</label>
+                                    <input type="text" name="9A_address" required />
+                                    <br/>
+                                    <label>País:</label>
+                                    <input type="text" name="9A_country" required />
+
+                                    <br/>
+
+                                    <label>Tel. o E-mail:</label>
+                                    <input type="text"  name="9A_phone_mail" pattern="([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$)||([0-9]{9})" title="Debe ser un teléfono o un email" required />
+
+                                    <br/>
+
+                                    <label>Permiso de conducir nº:</label>
+                                    <input type="text" name="9A_driver_license_number" required />
+                                    <br/>
+                                    <label>Categoría (A, B, ...):</label>
+                                    <select name="7A_brand" >
+                                        <option value="b">B</option>
+                                        <option value="a1">A1</option>
+                                        <option value="a2">A2</option>
+                                        <option value="c">C</option>
+                                        <option value="c1">C1</option>
+                                        <option value="d">D</option>
+                                        <option value="d1">D1</option>
+                                    </select>
+
+                                    <br/>
+
+                                    <label>Permiso válido hasta:</label>
+                                    <input type="date" name="9A_driver_license_date" required/>
+                                </section>
+
+                                <section>
+                                    <h4>10) Indicar el punto de choque inicial con una flecha:</h4>
+                                    <img src="img/vehiculos.png" alt="Imagen de vehículos" >
+                                </section>
+
+                                <section>
+                                    <h4>11) Daños apreciados al vehículo A:</h4>
+                                    <textarea name="11A_vehicle_damage" rows="4" cols="50">
+                                    </textarea>
+                                </section>
+
+                                <section>
+                                    <h4>14) Observaciones:</h4>
+                                    <textarea name="11A_observations" rows="4" cols="50">
+                                    </textarea>
+                                </section>
+                            </td>
+
+
+                            <td>
+                                <section>
+                                    <h4>12) CIRCUNSTANCIAS</h4>
+
+                                    <table border>
+                                        <tr>
+                                            <th>
+                                                A
+                                            </th>
+                                            <th>
+                                                Poner un aspa(x) en cada casilla que procesa para precisar el croquis
+                                            </th>
+                                            <th>
+                                                B
+                                            </th>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_1" value="12A_1">
+                                            </td>
+                                            <td>
+                                                *Estaba estacionado/parado
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_1" value="12B_1">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_2" value="12A_2">
+                                            </td>
+                                            <td>
+                                                *Salía de un estacionamiento/abriendo puerta
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_2" value="12B_2">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_3" value="12A_3">
+                                            </td>
+                                            <td>
+                                                Iba a estacionar
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_3" value="12B_3">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_4" value="12A_4">
+                                            </td>
+                                            <td>
+                                                Salía de un aparcamiento, a un lugar privado, a un camino de tierra
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_4" value="12B_4">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_5" value="12A_5">
+                                            </td>
+                                            <td>
+                                                Entraba a un aparcamiento, a un lugar privado, a un camino de tierra
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_5" value="12B_5">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_6" value="12A_6">
+                                            </td>
+                                            <td>
+                                                Entraba a una plaza de sentido giratorio
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_6" value="12B_6">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_7" value="12A_7">
+                                            </td>
+                                            <td>
+                                                Circulaba por una plaza de sentido giratorio
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_7" value="12B_7">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_8" value="12A_8">
+                                            </td>
+                                            <td>
+                                                Colisionó en la parte de atrás al otro vehículo que circulaba en el mismo sentido y en el mismo carril
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_8" value="12B_8">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_9" value="12A_9">
+                                            </td>
+                                            <td>
+                                                Circulaba en el mismo sentido y en carril diferente
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_9" value="12B_9">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_10" value="12A_10">
+                                            </td>
+                                            <td>
+                                                Cambiaba de carril
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_10" value="12B_10">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_11" value="12A_11">
+                                            </td>
+                                            <td>
+                                                Adelantaba
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_11" value="12B_11">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_12" value="12A_12">
+                                            </td>
+                                            <td>
+                                                Giraba a la derecha
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_12" value="12B_12">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_13" value="12A_13">
+                                            </td>
+                                            <td>
+                                                Giraba a la izquierda
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_13" value="12B_13">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_14" value="12A_14">
+                                            </td>
+                                            <td>
+                                                Daba marcha atrás
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_14" value="12B_14">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_15" value="12A_15">
+                                            </td>
+                                            <td>
+                                                Invadía la parte reservada a la circulación en sentido inverso
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_15" value="12B_15">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_16" value="12A_16">
+                                            </td>
+                                            <td>
+                                                Venía de la derecha (cruce)
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_16" value="12B_16">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="12A_17" value="12A_17">
+                                            </td>
+                                            <td>
+                                                No respetó la señal de preferencia o semáforo en rojo
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="12B_17" value="12B_17">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="number" name="12A" min="0" max="17" value="0">
+                                            </td>
+                                            <td>
+                                                Indicar número de casillas marcadas
+                                            </td>
+                                            <td>
+                                                <input type="number" name="12B" min="0" max="17" value="0">
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </section>
+
+                                <section>
+                                    <h4>13) Croquis del Accidente (en el momento de la colisión)</h4>
+                                    <img src="img/cuadricula.png" alt=""/>
+                                </section>
+                                <section>
+                                    <h4>15) Firma de los conductores</h4>
+
+                                </section>
+                            </td>
+
+                            <td>
+                                <!-- Vehiculo B -->
+                                <h2>Vehículo B</h2>
+
+                                <section>
+                                    <h4>6) Asegurado (véase póliza de seguro)</h4>
+
+                                    <label>Nombre:</label>
+                                    <input type="text" name="6B_name" required />
+                                    <br/>
+                                    <label>Apellidos:</label>
+                                    <input type="text" name="6B_surname" required />
+
+                                    <br/>
+
+                                    <label>Dirección:</label>
+                                    <input type="text" name="6B_address" required />
+                                    <br/>
+                                    <label>Código Postal:</label>
+                                    <input type="text" name="6B_zip_code" pattern="[0-9]{5}" title="Un código postal es un número con 5 dígitos" required>
+
+                                    <br/>
+
+                                    <label>País:</label>
+                                    <input type="text" name="6B_country" required />
+
+                                    <br/>
+
+                                    <label>Tel. o E-mail:</label>
+                                    <input type="text"  name="6B_phone_mail" pattern="([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$)||([0-9]{9})" title="Debe ser un teléfono o un email" required />
+                                </section>
+
+                                <br/>
+
+                                <section>
+                                    <h4>7) Vehículo</h4>
+
+                                    <h5>Vehículo a motor</h5>
+
+                                    <label>Marca, modelo:</label>
+                                    <select name="7B_brand" >
+                                        <option value="volvo">Volvo</option>
+                                        <option value="saab">Saab</option>
+                                        <option value="fiat">Fiat</option>
+                                        <option value="audi">Audi</option>
+                                    </select>
+
+                                    <br/>
+
+                                    <label>Matrícula (o bastidor):</label>
+                                    <input type="text" name="7B_vehicle_registration" required />
+                                    <br/>
+                                    <label>País de matrícula:</label>
+                                    <input type="text" name="7B_country_registration" required />
+
+                                    <h5>Remolque</h5>
+
+                                    <label>Matrícula (o bastidor):</label>
+                                    <input type="text" name="7B_towing_license_plate" />
+                                    <br/>
+                                    <label>País de matrícula:</label>
+                                    <input type="text" name="7B_country_towing" />
+                                </section>
+
+                                <br/>
+
+                                <section>
+                                    <h4>8) Aseguradora (véase póliza de seguro)</h4>
+
+                                    <label>Nombre:</label>
+                                    <input type="text" name="8B_name" required />
+                                    <br/>
+                                    <label>Nº de póliza:</label>
+                                    <input type="text" name="8B_policy_number" required />
+
+                                    <br/>
+
+                                    <label>Nº de carta verde:</label>
+                                    <input type="text" name="8B_green_letter_number" />
+
+                                    <br/>
+
+                                    <label>Certificado o carta verde valida desde:</label>
+                                    <input type="date" name="8B_valid_from" />
+                                    <label>hasta:</label>
+                                    <input type="date" name="8B_valid_until" />
+
+                                    <br/>
+
+                                    <label>Agencia (oficina o corredor):</label>
+                                    <input type="text" name="8B_agency" />
+
+                                    <br/>
+
+                                    <label>Nombre:</label>
+                                    <input type="text" name="8B_name_agency" />
+
+                                    <br/>
+
+                                    <label>Dirección:</label>
+                                    <input type="text" name="8B_address_agency" />
+                                    <br/>
+                                    <label>País:</label>
+                                    <input type="text" name="8B_country_agency" />
+
+                                    <br/>
+
+                                    <label>Tel. o E-mail:</label>
+                                    <input type="text"  name="8B_phone_mail" pattern="([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$)||([0-9]{9})" title="Debe ser un teléfono o un email" />
+
+                                    <br/>
+
+                                    <!--<form>-->
+                                        <label>¿Los daños propios del vehículo estan asegurados?</label>
+                                        <br/>
+                                        <input type="radio" name="8B_insured_damages" value="no" checked> No<br>
+                                        <input type="radio" name="8B_insured_damages" value="yes"> Sí<br>
+                                    <!--form>-->
+                                </section>
+
+                                <br/>
+
+                                <!-- Conductor A -->
+                                <section>
+                                    <h4>9) Conductor (ver permiso de conducir)</h4>
+
+                                    <label>Nombre:</label>
+                                    <input type="text" name="9B_name" required />
+                                    <br/>
+                                    <label>Apellidos:</label>
+                                    <input type="text" name="9B_surname" required />
+
+                                    <br/>
+
+                                    <label>Fecha de nacimiento:</label>
+                                    <input type="date" name="9B_birthdate" required/>
+
+                                    <br/>
+
+                                    <label>Dirección:</label>
+                                    <input type="text" name="9B_address" required />
+                                    <br/>
+                                    <label>País:</label>
+                                    <input type="text" name="9B_country" required />
+
+                                    <br/>
+
+                                    <label>Tel. o E-mail:</label>
+                                    <input type="text"  name="9B_phone_mail" pattern="([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$)||([0-9]{9})" title="Debe ser un teléfono o un email" required />
+
+                                    <br/>
+
+                                    <label>Permiso de conducir nº:</label>
+                                    <input type="text" name="9B_driver_license_number" required />
+                                    <br/>
+                                    <label>Categoría (A, B, ...):</label>
+                                    <select name="7B_brand" >
+                                        <option value="b">B</option>
+                                        <option value="a1">A1</option>
+                                        <option value="a2">A2</option>
+                                        <option value="c">C</option>
+                                        <option value="c1">C1</option>
+                                        <option value="d">D</option>
+                                        <option value="d1">D1</option>
+                                    </select>
+
+                                    <br/>
+
+                                    <label>Permiso válido hasta:</label>
+                                    <input type="date" name="9B_driver_license_date" required/>
+                                </section>
+
+                                <section>
+                                    <h4>10) Indicar el punto de choque inicial con una flecha:</h4>
+                                    <img src="img/vehiculos.png" alt="Imagen de vehículos" >
+                                </section>
+
+                                <section>
+                                    <h4>11) Daños apreciados al vehículo B:</h4>
+                                    <textarea name="11B_vehicle_damage" rows="4" cols="50">
+                                    </textarea>
+                                </section>
+
+                                <section>
+                                    <h4>14) Observaciones:</h4>
+                                    <textarea name="11B_observations" rows="4" cols="50">
+                                    </textarea>
+                                </section>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </section>
+
+
+                <!------------------------------>
+
+
+                <input type="submit" value="Submit!" />
+            </form>
+
+
+
+
+
+
+
+
+
+
+
+
+        </main>
+
+        <!--<div>Para las marcas hacer un desplegable (select) con algunas marcas. Usar checkbox y radiobuttons </div> -->
+    </body>
+</html>
